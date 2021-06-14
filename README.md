@@ -2,15 +2,23 @@
 
 ### Overview
 
-* Figma
-* Images
+- Figma
+- Responsive web design
+- Javascript
 
-**Figma**
+**Gitpages**
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+https://melissaglawrence.github.io/web_project_4/
 
-**Images**
+**Responsive**
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+Web page will look good on all desktop and mobile devices.
+Also should work on most browsers.
 
-Have fun with JavaScript!
+**Javascript**
+
+Users will be able to click the edit button an change the name and description in the profile.
+
+**Goals**
+
+Make the add button and like button functional .
