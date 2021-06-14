@@ -1,0 +1,21 @@
+.form {
+  background-color: white;
+  color: black;
+  height: 330px;
+  width: 430px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -215px;
+  margin-top: -195px;
+}
+
+@media screen and (max-width: 580px) {
+  .form {
+    width: 282px;
+    height: 322px;
+    margin-left: -141px;
+    margin-top: -123px;
+  }
+}

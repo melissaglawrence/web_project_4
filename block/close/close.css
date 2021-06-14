@@ -1,0 +1,17 @@
+.close {
+  color: white;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+@media screen and (max-width: 580px) {
+  .close {
+    width: 26px;
+    height: 26px;
+    right: 11px;
+    top: -37.62px;
+  }
+}

@@ -1,0 +1,17 @@
+.profile__edit {
+  background-color: black;
+  border: 1px solid white;
+  height: 24px;
+  max-width: 24px;
+  width: 100%;
+  margin: 0 0 0 18px;
+  vertical-align: super;
+}
+
+@media screen and (max-width: 480px) {
+  .profile__edit {
+    max-width: 18px;
+    height: 18px;
+    padding: 1px 3px;
+  }
+}

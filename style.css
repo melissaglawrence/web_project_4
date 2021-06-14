@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap');
+
+.page {
+  background-color: black;
+  color: white;
+  padding: 0;
+  max-width: 880px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+.header {
+  margin: 45px auto 0;
+  width: 100%;
+  padding-bottom: 41px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+.profile {
+  width: 100%;
+  margin: 40px auto 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profile__img {
+  background-image: url(/images/jamesbalog.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 120px;
+  max-width: 120px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile__text {
+  margin: 0 0 0 30px;
+}
+
+.profile__name {
+  margin: 0 0 16px;
+  padding: 0;
+  font-size: 42px;
+  line-height: 48px;
+  font-weight: 500;
+}
+
+.profile__desc {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.profile__edit {
+  background-color: black;
+  border: 1px solid white;
+  height: 24px;
+  max-width: 24px;
+  width: 100%;
+  margin: 0 0 30px 18px;
+}
+
+.profile__add {
+  height: 50px;
+  max-width: 150px;
+  width: 100%;
+  background-color: black;
+  border: 1px solid white;
+  margin-left: 165px;
+  padding: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  gap: 17px;
+}
+
+.grid-item {
+  height: 361px;
+  width: 282px;
+  background: white;
+  color: black;
+  list-style: none;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.grid-item__img {
+  height: 282px;
+  width: 282px;
+}
+
+.grid-item__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 15px 25px 21px;
+}
+
+.grid-item__text {
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.grid-item__like {
+  background-color: white;
+  border: none;
+  height: 19px;
+  width: 21px;
+}
+
+.footer {
+  margin: 67px 0 60px;
+}
+
+.footer__text {
+  color: #545454;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 720px) {
+  header {
+    width: calc(100% - 54px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile__add {
+    max-width: 282px;
+    margin: 0 auto;
+  }
+
+  .footer {
+    max-width: 282px;
+    width: 100%;
+    margin: 50px auto 36px;
+  }
+}
