@@ -1,4 +1,7 @@
 .profile__edit {
+  background-image: url(/images/Vector.svg);
+  background-repeat: no-repeat;
+  background-position: center;
   background-color: black;
   border: 1px solid white;
   height: 24px;
@@ -6,12 +9,12 @@
   width: 100%;
   margin: 0 0 0 18px;
   vertical-align: super;
+  padding: 0;
 }
 
 @media screen and (max-width: 480px) {
   .profile__edit {
     max-width: 18px;
     height: 18px;
-    padding: 0 3px;
   }
 }
