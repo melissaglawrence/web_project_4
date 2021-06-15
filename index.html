@@ -7,22 +7,32 @@
     <link rel="stylesheet" href="pages/index.css" />
   </head>
   <body class="page">
-    <main class="main">
-      <header class="header">
-        <div class="logo"></div>
-      </header>
-      <section class="profile">
-        <div class="profile__img"></div>
-        <div class="profile__text">
-          <div>
-            <h2 class="profile__name">Jacques Cousteau</h2>
-            <button class="profile__edit button"></button>
-          </div>
-          <p class="profile__desc">Explorer</p>
+    <header class="header">
+      <div class="logo"></div>
+    </header>
+    <section class="profile">
+      <div class="profile__img"></div>
+      <div class="profile__text">
+        <div class="profile__group">
+          <h2 class="profile__name">Jacques Cousteau</h2>
+          <button class="profile__edit button"></button>
         </div>
-        <button class="profile__add button"></button>
-      </section>
-
+        <p class="profile__desc">Explorer</p>
+      </div>
+      <button class="profile__add button"></button>
+    </section>
+    <section class="form visable">
+      <form class="form__container">
+        <button class="close button"></button>
+        <div class="form__info">
+          <h2 class="form__title">Edit profile</h2>
+          <input class="form__name" placeholder="Name" />
+          <input class="form__desc" placeholder="About Me" />
+          <button type="submit" class="form__save button">Save</button>
+        </div>
+      </form>
+    </section>
+    <section>
       <ul class="grid">
         <li class="grid-item">
           <img
@@ -91,19 +101,11 @@
           </div>
         </li>
       </ul>
-      <footer class="footer">
-        <p class="footer__text">&copy;2021 Around The U.S.</p>
-      </footer>
-    </main>
-    <form class="form visable">
-      <button class="close button"></button>
-      <div class="form__info">
-        <h2 class="form__title">Edit profile</h2>
-        <input class="form__name" placeholder="Name" />
-        <input class="form__desc" placeholder="About Me" />
-        <button type="submit" class="form__save button">Save</button>
-      </div>
-    </form>
+    </section>
+    <footer class="footer">
+      <p class="footer__text">&copy;2021 Around The U.S.</p>
+    </footer>
+
     <script src="script/script.js"></script>
   </body>
 </html>
