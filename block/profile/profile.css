@@ -27,5 +27,6 @@
     -ms-flex-direction: column;
     flex-direction: column;
     text-align: center;
+    margin: 42px auto 36px;
   }
 }
