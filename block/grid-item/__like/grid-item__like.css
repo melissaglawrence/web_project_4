@@ -7,3 +7,7 @@
   height: 19px;
   width: 21px;
 }
+
+.grid-item__like:hover {
+  opacity: 0.5;
+}
