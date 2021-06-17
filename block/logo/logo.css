@@ -8,11 +8,15 @@
   display: block;
 }
 
+@media screen and (max-width: 900px) {
+  .logo {
+    margin-left: 27px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .logo {
     max-width: 126px;
     height: 24px;
-
-    width: 100%;
   }
 }
