@@ -1,5 +1,5 @@
 .profile {
-  margin: 40px auto 50px;
+  margin: 40px auto 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,6 +27,6 @@
     -ms-flex-direction: column;
     flex-direction: column;
     text-align: center;
-    margin: 42px auto 36px;
+    margin: 42px auto 0;
   }
 }
