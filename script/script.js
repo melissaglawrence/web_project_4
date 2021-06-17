@@ -2,31 +2,29 @@ let page = document.querySelector(".page");
 let edit = page.querySelector(".profile__edit");
 let profileName = page.querySelector(".profile__name");
 let profileDesc = page.querySelector(".profile__desc");
-let form = document.querySelector(".form");
-let formName = form.querySelector(".form__name");
-let formDesc = form.querySelector(".form__desc");
-let closeBttn = form.querySelector(".close");
-let save = form.querySelector(".form__save");
+let popup = document.querySelector(".popup");
+let popupName = popup.querySelector(".popup__input_name_edit");
+let popupDesc = popup.querySelector(".popup__input_desc_edit");
+let closeBttn = popup.querySelector(".popup__close");
+let save = popup.querySelector(".popup__save");
 
-function popup(evt){
-    formName.value = profileName.textContent;
-    formDesc.value = profileDesc.textContent;
-    form.classList.remove("visable");
-    evt.preventDefault();
+function popupForm(evt){
+    popupName.value = profileName.textContent;
+    popupDesc.value = profileDesc.textContent;
+    popup.classList.remove("popup__opened");
 }
 
 function closeForm(evt){
-    evt.preventDefault();
-    form.classList.add("visable");
+    popup.classList.add("popup__opened");
 }
 
 function saveForm(evt){
-    profileDesc.textContent = formDesc.value;
-    profileName.textContent = formName.value;
-    form.classList.add("visable");
+    profileDesc.textContent = popupDesc.value;
+    profileName.textContent = popupName.value;
+    popup.classList.add("popup__opened");
     evt.preventDefault();
 }
 
-save.addEventListener("click", saveForm);
+popup.addEventListener("submit", saveForm);
 closeBttn.addEventListener("click", closeForm);
-edit.addEventListener("click", popup);
+edit.addEventListener("click", popupForm);
