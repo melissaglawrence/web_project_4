@@ -3,10 +3,10 @@ let edit = page.querySelector(".profile__edit");
 let profileName = page.querySelector(".profile__name");
 let profileDesc = page.querySelector(".profile__desc");
 let popup = document.querySelector(".popup");
-let popupName = popup.querySelector(".popup__input_name_edit");
-let popupDesc = popup.querySelector(".popup__input_desc_edit");
+let popupInfo = popup.querySelector(".popup__info")
+let popupName = popup.querySelector(".popup__input_edit_name");
+let popupDesc = popup.querySelector(".popup__input_edit_about");
 let closeBttn = popup.querySelector(".popup__close");
-let save = popup.querySelector(".popup__save");
 
 function popupForm(){
     popupName.value = profileName.textContent;
@@ -25,6 +25,6 @@ function saveForm(evt){
     evt.preventDefault();
 }
 
-popup.addEventListener("submit", saveForm);
+popupInfo.addEventListener("submit", saveForm);
 closeBttn.addEventListener("click", closeForm);
 edit.addEventListener("click", popupForm);
