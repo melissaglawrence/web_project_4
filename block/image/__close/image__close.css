@@ -1,0 +1,23 @@
+.image__close {
+  background-image: url(../../../../images/close.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: -40px;
+  right: -40px;
+}
+
+@media screen and (max-width: 480px) {
+  .image__close {
+    width: 30px;
+    height: 30px;
+    top: -30px;
+    right: -30px;
+  }
+}
