@@ -2,12 +2,12 @@ const page = document.querySelector(".page");
 const edit = page.querySelector(".profile__edit");
 const profileName = page.querySelector(".profile__name");
 const profileDesc = page.querySelector(".profile__desc");
-const popup = document.querySelector("#popup__edit");
+const popup = document.querySelector("#popupEdit");
 const popupInfo = popup.querySelector(".popup__info")
 const popupName = popup.querySelector(".popup__input_edit_name");
 const popupDesc = popup.querySelector(".popup__input_edit_about");
 const closeBtn = popup.querySelector(".popup__close");
-const placePop = document.querySelector("#popup__place");
+const placePop = document.querySelector("#popupPlace");
 const closePlaceBtn = placePop.querySelector(".popup__close");
 const profileAdd = document.querySelector(".profile__add");
 
@@ -72,7 +72,7 @@ const placeCards = [
   }
 ];
 
-const placeInfo = placePop.querySelector(".place__info");
+const placeInfo = placePop.querySelector("#placeInfo");
 const gridList = document.querySelector(".grid__list");
 const image = document.querySelector(".image"); 
 const imageClose = image.querySelector(".image__close");
