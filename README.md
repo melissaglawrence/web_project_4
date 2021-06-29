@@ -23,4 +23,4 @@ Users are also able to like and delete images. They can also see a larger versio
 
 **Goals**
 
-Add more features for user interactivity.
+Add more features for user interactivity..
