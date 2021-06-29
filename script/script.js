@@ -1,21 +1,21 @@
-let page = document.querySelector(".page");
-let edit = page.querySelector(".profile__edit");
-let profileName = page.querySelector(".profile__name");
-let profileDesc = page.querySelector(".profile__desc");
-let popup = document.querySelector("#popup__edit");
-let popupInfo = popup.querySelector(".popup__info")
-let popupName = popup.querySelector(".popup__input_edit_name");
-let popupDesc = popup.querySelector(".popup__input_edit_about");
-let closeBtn = popup.querySelector(".popup__close");
-let placePop = document.querySelector("#popup__place");
-let closePlaceBtn = placePop.querySelector(".popup__close");
-let profileAdd = document.querySelector(".profile__add");
+const page = document.querySelector(".page");
+const edit = page.querySelector(".profile__edit");
+const profileName = page.querySelector(".profile__name");
+const profileDesc = page.querySelector(".profile__desc");
+const popup = document.querySelector("#popup__edit");
+const popupInfo = popup.querySelector(".popup__info")
+const popupName = popup.querySelector(".popup__input_edit_name");
+const popupDesc = popup.querySelector(".popup__input_edit_about");
+const closeBtn = popup.querySelector(".popup__close");
+const placePop = document.querySelector("#popup__place");
+const closePlaceBtn = placePop.querySelector(".popup__close");
+const profileAdd = document.querySelector(".profile__add");
 
 
 function popupForm(){
-    popupName.value = profileName.textContent;
-    popupDesc.value = profileDesc.textContent;
-    popup.classList.remove("popup_opened");
+  popupName.value = profileName.textContent;
+  popupDesc.value = profileDesc.textContent;
+  popup.classList.remove("popup_opened");
 }
 
 function closeForm(){
@@ -29,15 +29,12 @@ function saveForm(evt){
   evt.preventDefault();
 }
 
-function placeAdd(evt){
+function placeAdd(){
   placePop.classList.remove("popup_opened");
-  evt.preventDefault();
-
 }
 
-function placeClose(evt){
-    placePop.classList.add("popup_opened");
-    evt.preventDefault();
+function placeClose(){
+  placePop.classList.add("popup_opened");
 }
 
 
@@ -48,7 +45,7 @@ closePlaceBtn.addEventListener("click", placeClose);
 profileAdd.addEventListener("click", placeAdd);
 
 
-const initialCards = [
+const placeCards = [
   {
     name: "Yosemite Valley",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
@@ -75,10 +72,10 @@ const initialCards = [
   }
 ];
 
-let placeCards = Array.from(initialCards);
-
-let placeInfo = placePop.querySelector(".place__info");
-let gridList = document.querySelector(".grid__list");
+const placeInfo = placePop.querySelector(".place__info");
+const gridList = document.querySelector(".grid__list");
+const image = document.querySelector(".image"); 
+const imageClose = image.querySelector(".image__close");
 
 function createCard(place) {
   const gridTemp = document.querySelector("#grid-template").content;
@@ -87,6 +84,8 @@ function createCard(place) {
 
   gridItem.querySelector(".grid-item__text").textContent = place.name;
   placeImage.src = place.link;
+  gridList.prepend(gridItem);
+
 
   gridItem.querySelector(".grid-item__like").addEventListener("click", function(evt){
     evt.target.classList.toggle("grid-item__like_active");
@@ -94,16 +93,14 @@ function createCard(place) {
 
   gridItem.querySelector(".grid-item__trash").addEventListener("click", function(evt){
       evt.target.parentElement.remove();
-  })
+  });
 
-  let image = document.querySelector(".image"); 
-  let imageClose = image.querySelector(".image__close"); 
 
   placeImage.addEventListener("click", function (evt){ 
-    let imageContainer = image.querySelector(".image__container");
+    const imageContainer = image.querySelector(".image__container");
    
-    let evtImage = evt.currentTarget.src; 
-    let evtText = evt.currentTarget.parentElement.textContent;
+    const evtImage = evt.currentTarget.src; 
+    const evtText = evt.currentTarget.parentElement.textContent;
 
     imageContainer.querySelector(".image__content").src = evtImage;
     imageContainer.querySelector(".image__text").textContent = evtText;
@@ -113,33 +110,28 @@ function createCard(place) {
     return imageContainer; 
   });
   
+
   imageClose.addEventListener("click", function(){
     image.classList.add("image_hidden");
   });
   
+
   return gridItem;
 };
 
+placeCards.forEach(createCard);
 
 
-function displayCards(){
-  placeCards.forEach(function(place) {
-  gridList.append(createCard(place));
-});
-};
-
-function displayNew(){
-  placeInfo.addEventListener("submit", function(evt) {
+placeInfo.addEventListener("submit", function(evt) {
   const newPlace = {
     name: placePop.querySelector('.popup__input_edit_title').value,
     link: placePop.querySelector('.popup__input_edit_image').value
   }
   placeCards.unshift(newPlace);
-  placePop.classList.add("popup_opened");
+  createCard(newPlace);
   evt.preventDefault();
-  return placeCards;
-  });
-}
+  placeInfo.reset();
+  placePop.classList.add("popup_opened");
+});
 
-displayCards();
 
