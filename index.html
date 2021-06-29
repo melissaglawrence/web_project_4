@@ -30,7 +30,7 @@
           aria-label="add"
         ></button>
       </section>
-      <section class="popup popup_opened">
+      <section class="popup popup_opened" id="popup__edit">
         <div class="popup__container">
           <button
             class="popup__close button"
@@ -55,104 +55,68 @@
           </form>
         </div>
       </section>
+      <section class="popup popup_opened" id="popup__place">
+        <div class="popup__container">
+          <button
+            class="popup__close button"
+            type="button"
+            aria-label="Close"
+          ></button>
+          <form class="popup__info place__info" name="editForm">
+            <h2 class="popup__title">New place</h2>
+            <input
+              class="popup__input popup__input_edit_title"
+              placeholder="Title"
+              name="title"
+            />
+            <input
+              class="popup__input popup__input_edit_image"
+              placeholder="Image link"
+              name="imageUrl"
+            />
+            <button type="submit" class="popup__save button" aria-label="save">
+              Create
+            </button>
+          </form>
+        </div>
+      </section>
       <section class="grid">
-        <ul class="grid__list">
-          <li class="grid-item">
-            <img
-              src="images/yosemite.jpg"
-              class="grid-item__img"
-              alt="flowing river in a forest of tall trees and mountains in the background"
-            />
-            <div class="grid-item__info">
-              <h2 class="grid-item__text">Yosemite Valley</h2>
-              <button
-                class="grid-item__like button"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="grid-item">
-            <img
-              src="images/lakelouise.jpg"
-              class="grid-item__img"
-              alt="calm blue lake in the middle of the mountains"
-            />
-            <div class="grid-item__info">
-              <h2 class="grid-item__text">Lake Louise</h2>
-              <button
-                class="grid-item__like button"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="grid-item">
-            <img
-              src="images/baldmountains.jpg"
-              class="grid-item__img"
-              alt="orange sunset peaking through lots of hills"
-            />
-            <div class="grid-item__info">
-              <h2 class="grid-item__text">Bald Mountains</h2>
-              <button
-                class="grid-item__like button"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="grid-item">
-            <img
-              src="images/latemar.jpg"
-              class="grid-item__img"
-              alt="snowy mountains at night with a lot of stars above"
-            />
-            <div class="grid-item__info">
-              <h2 class="grid-item__text">Latemar</h2>
-              <button
-                class="grid-item__like button"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="grid-item">
-            <img
-              src="images/vanoise.jpg"
-              class="grid-item__img"
-              alt="from the shore of a lake witha sunset behind the mountains"
-            />
-            <div class="grid-item__info">
-              <h2 class="grid-item__text">Vanoise National Park</h2>
-              <button
-                class="grid-item__like button"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="grid-item">
-            <img
-              src="images/lago.jpg"
-              class="grid-item__img"
-              alt="Rocky mountains from the view of a lake with row boats off the pier"
-            />
-            <div class="grid-item__info">
-              <h2 class="grid-item__text">Lago di Braies</h2>
-              <button
-                class="grid-item__like button"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-        </ul>
+        <ul class="grid__list"></ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__text">&copy;2021 Around The U.S.</p>
     </footer>
+
+    <template id="grid-template">
+      <li class="grid-item">
+        <button
+          class="grid-item__trash button"
+          type="button"
+          aria-label="trash"
+        ></button>
+        <img class="grid-item__img" />
+        <div class="grid-item__info">
+          <h2 class="grid-item__text"></h2>
+          <button
+            class="grid-item__like button"
+            type="button"
+            aria-label="like"
+          ></button>
+        </div>
+      </li>
+    </template>
+    <div class="image image_hidden">
+      <div class="image__container">
+        <button
+          class="image__close button"
+          type="button"
+          aria-label="Close"
+        ></button>
+        <img class="image__content" />
+        <div class="image__text"></div>
+      </div>
+    </div>
     <script src="script/script.js"></script>
   </body>
 </html>

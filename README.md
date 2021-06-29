@@ -18,7 +18,9 @@ Also should work on most browsers.
 **Javascript**
 
 Users will be able to click the edit button an change the name and description in the profile.
+Add button works to create new place cards.
+Users are also able to like and delete images. They can also see a larger version of an image by clicking on it.
 
 **Goals**
 
-Make the add button and like button functional .
+Add more features for user interactivity.
