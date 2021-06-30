@@ -2,7 +2,7 @@
 @import url(../vendor/fonts/fonts.css);
 @import url(../block/root/root.css);
 @import url(../block/image/_hidden/image_hidden.css);
-@import url(../block/popup/_opened/popup_opened.css);
+@import url(../block/popup/_hidden/popup_hidden.css);
 @import url(../block/image/image.css);
 @import url(../block/image/__container/image__container.css);
 @import url(../block/image/__content/image__content.css);
