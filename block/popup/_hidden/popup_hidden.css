@@ -1,4 +1,4 @@
-.popup_opened {
+.popup_hidden {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s, visibility 0.3s;
