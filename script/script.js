@@ -11,6 +11,8 @@ const placePopup = document.querySelector("#popupPlace");
 const closePlaceBtn = placePopup.querySelector(".popup__close");
 const placeInfo = placePopup.querySelector("#placeInfo");
 const popupAddCard = document.querySelector(".profile__add");
+const image = document.querySelector(".image"); 
+const imageClose = image.querySelector(".image__close");
 
 
 function openModal(modal){
@@ -74,7 +76,7 @@ function createCard(place) {
   const placeImage = gridItem.querySelector(".grid-item__img");
   const gridList = document.querySelector(".grid__list");
   const image = document.querySelector(".image"); 
-  const imageClose = image.querySelector(".image__close");
+
 
   gridItem.querySelector(".grid-item__text").textContent = place.name;
   placeImage.src = place.link;
@@ -102,16 +104,15 @@ function createCard(place) {
   });
   
 
-  imageClose.addEventListener("click", function(){
-    image.classList.add("image_hidden");
-  });
-  
-
   return gridItem;
 };
 
 placeCards.forEach(createCard);
 
+
+imageClose.addEventListener("click", function(){
+  image.classList.add("image_hidden");
+});
 
 placeInfo.addEventListener("submit", function(evt) {
   evt.preventDefault();
