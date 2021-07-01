@@ -103,7 +103,6 @@ function createCard(place) {
     return imageContainer; 
   });
   
-
   return gridItem;
 };
 
