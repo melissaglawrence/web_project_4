@@ -14,7 +14,6 @@ const popupAddCard = document.querySelector(".profile__add");
 const image = document.querySelector(".image"); 
 const imageClose = image.querySelector(".image__close");
 
-
 function openModal(modal){
   modal.classList.remove("popup_hidden");
 }
