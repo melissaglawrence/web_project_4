@@ -8,5 +8,6 @@
   margin: 0 0 5px;
   padding-bottom: 9px;
   display: block;
-  width: 358px;
+  max-width: 358px;
+  width: 100%;
 }
