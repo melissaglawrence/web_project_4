@@ -20,6 +20,7 @@ Also should work on most browsers.
 Users will be able to click the edit button an change the name and description in the profile.
 Add button works to create new place cards.
 Users are also able to like and delete images. They can also see a larger version of an image by clicking on it.
+Added form Validation so the user cant submit new profile information or a new place card without all the inputs being filled correctly.
 
 **Goals**
 
