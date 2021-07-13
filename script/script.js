@@ -58,6 +58,7 @@ popups.forEach(function(modal){
   modal.addEventListener("click", function(evt){
     if(evt.target.classList.contains("popup")){
       evt.currentTarget.classList.add("popup_hidden");}
+
   })
 });
 
@@ -148,10 +149,11 @@ placeCards.forEach(createCard);
 
 
 image.addEventListener("click", function(evt){
-  if(evt.target.classList.contains("image")){
+  if(evt.target.classList.contains("image") || (evt.target.classList.contains("image__close"))){
     evt.currentTarget.classList.add("image_hidden");
   }
 });
+
 
 placeInfo.addEventListener("submit", function(evt){
   evt.preventDefault();

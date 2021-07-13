@@ -19,18 +19,17 @@ function hideInputError(formElement, inputElement) {
 
 //CHECKS IF INPUT IS VALID AND SHOWS OR HIDES ERROR
 function isValid(formElement, inputElement) {
-  if (!inputElement.validity.valid) {
+  if(!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
+  }else {
     hideInputError(formElement, inputElement);
   }
-  
 };
 
 
 //CHECKS IF ALL INPUTS ARE VALID --FOR SAVE BUTTON
 function hasInvalidInput(inputList){
-  return inputList.some((inputElement) =>{
+  return inputList.some((inputElement) => {
      return !inputElement.validity.valid;
   })
 }
@@ -62,6 +61,7 @@ function setEventListeners(formElement) {
     });
   });
 };
+
 
 
 function enableValidation() {
