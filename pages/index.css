@@ -1,13 +1,9 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
 @import url(../block/root/root.css);
-
-@import url(../block/image/_hidden/image_hidden.css);
-@import url(../block/image/image.css);
-@import url(../block/image/__container/image__container.css);
-@import url(../block/image/__content/image__content.css);
-@import url(../block/image/__text/image__text.css);
-@import url(../block/image/__close/image__close.css);
+@import url(../block/popup/__image-container/popup__image-container.css);
+@import url(../block/popup/__image-content/popup__image-content.css);
+@import url(../block/popup/__image-text/popup__image-text.css);
 @import url(../block/button/button.css);
 @import url(../block/header/header.css);
 @import url(../block/profile/profile.css);
