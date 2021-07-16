@@ -103,7 +103,12 @@
               />
               <span class="image-input-error popup__input-error"></span>
             </div>
-            <button type="submit" class="popup__save button" aria-label="save">
+            <button
+              type="submit"
+              class="popup__save button popup__save_inactive"
+              aria-label="save"
+              disabled
+            >
               Create
             </button>
           </form>
@@ -135,17 +140,18 @@
         </div>
       </li>
     </template>
-    <div class="image image_hidden">
-      <div class="image__container">
+    <div class="popup popup_hidden">
+      <div class="popup__image-container">
         <button
-          class="image__close button"
+          class="popup__close button"
           type="button"
           aria-label="Close"
         ></button>
-        <img class="image__content" src="#" alt="#" />
-        <div class="image__text"></div>
+        <img class="popup__image-content" src="#" alt="#" />
+        <div class="popup__image-text"></div>
       </div>
     </div>
+    <script src="script/initial-cards.js"></script>
     <script src="script/script.js"></script>
     <script src="script/validate.js"></script>
   </body>
