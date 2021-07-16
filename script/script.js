@@ -20,7 +20,7 @@ const popups = Array.from(document.querySelectorAll(".popup"));
 function openModal(modal){
   modal.classList.remove("popup_hidden");
   window.addEventListener("keydown", keyHandler);
-}
+  }
 
  
 
@@ -86,7 +86,7 @@ function createCard(place) {
   });
 
   placeImage.addEventListener("click", function (evt){ 
-    const popupImage = document.querySelector(".popup__image");
+    const popupImage = document.querySelector("#popup__image");
     imageContainer.querySelector(".popup__image-content").src = place.link;
     imageContainer.querySelector(".popup__image-text").textContent = place.name;
     imageContainer.querySelector(".popup__image-content").alt = place.name;
