@@ -1,4 +1,3 @@
-
 //MAKES THE ERROR MESSAGE/BORDER VISABLE TO THE USER
 function showInputError (formElement, inputElement, errorMessage) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -37,43 +36,50 @@ function hasInvalidInput(inputList){
 
 //MAKES BUTTON INACTIVE OR ACTIVE BASED ON INPUTS
 function toggleButtonState(inputList, buttonElement){
-if(hasInvalidInput(inputList)){
+  if(hasInvalidInput(inputList)){
   buttonElement.classList.add("popup__save_inactive");
-}else{
+  buttonElement.disabled = true;
+  }else{
   buttonElement.classList.remove("popup__save_inactive");
-}
-}
+  buttonElement.disabled = false;
+}}
+
+
 
 //MAKES AN ARRAY OF ALL THE INPUTS AND BUTTONS FROM THE FORMS AND ADD AN EVENT LISTENER TO ALL OF THEM
 function setEventListeners(formElement) {
   const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
   const buttonElements = Array.from(formElement.querySelectorAll(".popup__save"));
-  buttonElements.forEach(function(btn){
-    toggleButtonState(inputList, btn);
-  })
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", function () {
+    inputElement.addEventListener("input", () => {
       isValid(formElement, inputElement);
-      buttonElements.forEach(function(btn){
+      buttonElements.forEach((btn) => {
       toggleButtonState(inputList, btn);
-      
       })
     });
   });
 };
-
-
 
 function enableValidation() {
   const formList = Array.from(document.querySelectorAll(".popup__info"));
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
-    });
+      
+       });
 
     setEventListeners(formElement);
     
   });
 };
 
-enableValidation();
+enableValidation({
+  formSelector: ".popup__info",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_inactive",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active"
+}); 
+
+//Removed formReset function, It was more complicated then I thought and some tutors advised other students on slack to wait for the next sprint since its not required for this one
