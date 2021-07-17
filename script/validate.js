@@ -65,9 +65,12 @@ function enableValidation() {
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
-      
-       });
-
+      const buttonElements = Array.from(formElement.querySelectorAll(".popup__save"));
+      const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
+      buttonElements.forEach((btn) => {
+        toggleButtonState(inputList, btn);
+      });
+    })
     setEventListeners(formElement);
     
   });
@@ -81,5 +84,3 @@ enableValidation({
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_active"
 }); 
-
-//Removed formReset function, It was more complicated then I thought and some tutors advised other students on slack to wait for the next sprint since its not required for this one
