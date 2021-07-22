@@ -27,10 +27,14 @@ const forms = document.querySelectorAll(".popup__info");
 function openModal(modal){
   modal.classList.add("popup_opened");
   window.addEventListener("keydown", keyHandler);
-  forms.forEach((formInput) => {
-    formInput.reset();
-  })
   }
+
+
+function addPlaceForm(modal){
+  placeInfo.reset();
+  openModal(modal)
+}
+
 
 function keyHandler(evt){
   if(evt.key === "Escape"){
@@ -65,9 +69,7 @@ popups.forEach((modal) =>{
   })
 });
 
-profilePopupCloseBtn.addEventListener('click', () => closeModal(popupProfile));
-closePlaceBtn.addEventListener("click", () => closeModal(popupAddPlace));
-buttonAddCard.addEventListener('click', () => openModal(popupAddPlace));
+buttonAddCard.addEventListener('click', () => addPlaceForm(popupAddPlace));
 profileForm.addEventListener("submit", submitProfileForm);
 profileEditBtn.addEventListener("click", openProfileForm);
 
