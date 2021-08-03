@@ -1,20 +1,8 @@
-function openModal(modal){
-  modal.classList.add("popup_opened");
-  window.addEventListener("keydown", keyHandler);
-}
+import { openModal } from "./utils/utils.js";
 
-function closeModal(modal){
-    modal.classList.remove("popup_opened");
-    window.removeEventListener("keydown", keyHandler);
-  };
-
-function keyHandler(evt){
-  if(evt.key === "Escape"){
-    const popupOpened = document.querySelector(".popup_opened");
-    closeModal(popupOpened);
-  }
-};
-
+const imageContainer = document.querySelector(".popup__image-container");
+const popupImageContent = imageContainer.querySelector(".popup__image-content");
+const popupImageText =  imageContainer.querySelector(".popup__image-text");
 
 class Card {
     constructor(data, cardSelector){
@@ -34,18 +22,15 @@ class Card {
       return cardElement;
     }
 
-    _imageLike(){
+    _likeCard(){
         this._card.querySelector(".grid-item__like").classList.toggle("grid-item__like_active");
     }
 
-    _imageTrash(){
+    _deleteCard(){
         this._card.remove();
     }
 
-    _imagePopup(){
-        const imageContainer = document.querySelector(".popup__image-container");
-        const popupImageContent = imageContainer.querySelector(".popup__image-content");
-        const popupImageText =  imageContainer.querySelector(".popup__image-text");
+    _openImagePopup(){
         popupImageContent.src = this._link;
         popupImageText.textContent = this._name;
         popupImageContent.alt = this._name;
@@ -60,13 +45,13 @@ class Card {
         const _imageElement = this._card.querySelector(".grid-item__img");
 
         _imageElement.addEventListener("click", () => {
-        this._imagePopup();
+        this._openImagePopup();
         })
         _trashButton.addEventListener("click", (evt) => {
-        this._imageTrash(evt)
+        this._deleteCard(evt)
         });
         _likeButton.addEventListener("click", (evt) => {
-        this._imageLike(evt)
+        this._likeCard(evt)
         });
     }
 
@@ -75,8 +60,9 @@ class Card {
         this._setEventListeners();
 
         this._card.querySelector(".grid-item__img").src = this._link;
-        this._card.querySelector(".grid-item__text").textContent = this._name;
-        this._card.querySelector(".grid-item__text").alt = this._name;
+        const cardText = this._card.querySelector(".grid-item__text");
+        cardText.textContent = this._name;
+        cardText.alt = this._name;
 
         return this._card;
     }
