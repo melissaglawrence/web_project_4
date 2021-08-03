@@ -1,4 +1,3 @@
-
 function openModal(modal){
   modal.classList.add("popup_opened");
   window.addEventListener("keydown", keyHandler);
@@ -75,7 +74,7 @@ class Card {
         this._card = this._getTemplate();
         this._setEventListeners();
 
-        this._card.querySelector(".grid-item__img").style.backgroundImage = `url(${this._link})`;
+        this._card.querySelector(".grid-item__img").src = this._link;
         this._card.querySelector(".grid-item__text").textContent = this._name;
         this._card.querySelector(".grid-item__text").alt = this._name;
 
