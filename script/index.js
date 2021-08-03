@@ -1,7 +1,9 @@
 import FormValidator from "./FormValidate.js";
 import placeCards from "./initial-cards.js";
 import Card from "./Card.js";
+import { openModal, closeModal } from "./utils/utils.js";
 
+// FORMS
 const page = document.querySelector(".page");
 const profileEditBtn = page.querySelector(".profile__edit");
 const profileName = page.querySelector(".profile__name");
@@ -13,32 +15,16 @@ const inputDescription = popupProfile.querySelector(".popup__input_edit_about");
 const buttonAddCard = document.querySelector(".profile__add");
 const popups = Array.from(document.querySelectorAll(".popup"));
 
-function openModal(modal){
-  modal.classList.add("popup_opened");
-  window.addEventListener("keydown", keyHandler);
-}
-
-function addPlaceForm(modal){
-  placeInfo.reset();
-  openModal(modal)
-}
-
-function keyHandler(evt){
-  if(evt.key === "Escape"){
-    const popupOpened = document.querySelector(".popup_opened");
-    closeModal(popupOpened);
-  }
-};
-
-function closeModal(modal){
-  modal.classList.remove("popup_opened");
-  window.removeEventListener("keydown", keyHandler);
-};
 
 function openProfileForm(){
   openModal(popupProfile);
   inputName.value = profileName.textContent;
   inputDescription.value = profileDesc.textContent;
+}
+
+const openAddPlaceForm = (modal) => {
+  placeInfo.reset();
+  openModal(modal);
 }
 
 function submitProfileForm(evt){
@@ -56,14 +42,11 @@ popups.forEach((modal) =>{
   })
 });
 
-buttonAddCard.addEventListener('click', () => addPlaceForm(popupAddPlace));
 profileForm.addEventListener("submit", submitProfileForm);
 profileEditBtn.addEventListener("click", openProfileForm);
+buttonAddCard.addEventListener('click', () => openAddPlaceForm(popupAddPlace));
 
-
-
-
-//CREATE CARD CLASSES
+// CREATE CARDS
 const gridList = document.querySelector(".grid__list");
 const popupAddPlace = document.querySelector("#popupPlace");
 const inputTitle = popupAddPlace.querySelector('.popup__input_edit_title');
@@ -71,40 +54,34 @@ const inputImage = popupAddPlace.querySelector('.popup__input_edit_image');
 const placeInfo = popupAddPlace.querySelector("#placeInfo");
 const cardSelector = "#grid-template";
 
-
-const renderCard = (data, list) => {
-	const card = new Card(data, cardSelector);
-  list.prepend(card.generateCard());
+const renderCard = (validationConfig) => {
+	const card = new Card(validationConfig, cardSelector);
+  return card.generateCard();
 };
 
-placeCards.forEach((place) => {
-  renderCard(place, gridList);
-});
-
-
-const renderNewCard = () => {
-  placeInfo.addEventListener("submit", function(evt){
-    evt.preventDefault();
-    renderCard({
-      name: inputTitle.value,
-      link: inputImage.value
-    }, gridList);
-    placeInfo.reset();
-    closeModal(popupAddPlace);
-  });
+const createCard = (validationConfig, list) => {
+  list.prepend(renderCard(validationConfig));
 }
 
+const submitAddCardForm = (evt) => {
+  placeInfo.addEventListener("submit", function(evt){ 
+    evt.preventDefault(); 
+    createCard({ 
+      name: inputTitle.value, 
+      link: inputImage.value 
+    }, gridList); 
+    placeInfo.reset(); 
+    closeModal(popupAddPlace); 
+  }); 
+} 
 
+placeCards.forEach((place) => {
+  createCard(place, gridList);
+})
 
+submitAddCardForm();
 
-
-
-renderNewCard();
-
-console.log(document.querySelector("#grid-template").content.querySelector(".grid-item__img"));
-
-//FORM VALIDATION CLASSES
-
+// FORM VALIDATION 
 const data = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save",
