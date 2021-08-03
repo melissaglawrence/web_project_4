@@ -2,8 +2,6 @@ import FormValidator from "./FormValidate.js";
 import placeCards from "./initial-cards.js";
 import Card from "./Card.js";
 
-
-
 const page = document.querySelector(".page");
 const profileEditBtn = page.querySelector(".profile__edit");
 const profileName = page.querySelector(".profile__name");
@@ -79,6 +77,10 @@ const renderCard = (data, list) => {
   list.prepend(card.generateCard());
 };
 
+placeCards.forEach((place) => {
+  renderCard(place, gridList);
+});
+
 
 const renderNewCard = () => {
   placeInfo.addEventListener("submit", function(evt){
@@ -92,11 +94,14 @@ const renderNewCard = () => {
   });
 }
 
-placeCards.forEach((place) => {
-  renderCard(place, gridList);
-});
+
+
+
+
 
 renderNewCard();
+
+console.log(document.querySelector("#grid-template").content.querySelector(".grid-item__img"));
 
 //FORM VALIDATION CLASSES
 
