@@ -3,7 +3,6 @@ import placeCards from "./initial-cards.js";
 import Card from "./Card.js";
 import { openModal, closeModal } from "./utils/utils.js";
 
-// FORMS
 const page = document.querySelector(".page");
 const profileEditBtn = page.querySelector(".profile__edit");
 const profileName = page.querySelector(".profile__name");
@@ -14,7 +13,6 @@ const inputName = popupProfile.querySelector(".popup__input_edit_name");
 const inputDescription = popupProfile.querySelector(".popup__input_edit_about");
 const buttonAddCard = document.querySelector(".profile__add");
 const popups = Array.from(document.querySelectorAll(".popup"));
-
 
 function openProfileForm(){
   openModal(popupProfile);
@@ -64,22 +62,20 @@ const createCard = (validationConfig, list) => {
 }
 
 const submitAddCardForm = (evt) => {
-  placeInfo.addEventListener("submit", function(evt){ 
-    evt.preventDefault(); 
-    createCard({ 
-      name: inputTitle.value, 
-      link: inputImage.value 
-    }, gridList); 
-    placeInfo.reset(); 
-    closeModal(popupAddPlace); 
-  }); 
-} 
+  evt.preventDefault(); 
+  createCard({ 
+    name: inputTitle.value, 
+    link: inputImage.value 
+  }, gridList); 
+  placeInfo.reset(); 
+  closeModal(popupAddPlace); 
+}; 
 
 placeCards.forEach((place) => {
   createCard(place, gridList);
 })
 
-submitAddCardForm();
+placeInfo.addEventListener("submit", submitAddCardForm); 
 
 // FORM VALIDATION 
 const data = {
