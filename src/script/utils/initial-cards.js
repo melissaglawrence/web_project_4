@@ -1,4 +1,4 @@
-const placeCards = [
+ const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
@@ -25,4 +25,4 @@ const placeCards = [
   }
 ];
 
-export default placeCards
+export default initialCards
