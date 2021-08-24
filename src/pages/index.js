@@ -73,8 +73,8 @@ const cardList = new Section(
 const newPlace = new PopupWithForm(
   {
     handleFormSubmit: (item) => {
-      const newCard = [{ name: item.title, link: item.imageUrl }];
-      cardList.renderItems(newCard);
+      const newCards = [{ name: item.title, link: item.imageUrl }];
+      cardList.renderItems(newCards);
       newPlace.close();
     },
   },
