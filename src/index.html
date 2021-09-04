@@ -11,17 +11,20 @@
     </header>
     <main>
       <section class="profile">
-        <div class="profile__img"></div>
+        <div class="profile__img">
+          <img src="#" class="profile__img_content" alt="avatar" />
+          <div class="profile__img_edit-icon"></div>
+        </div>
         <div class="profile__text">
           <div class="profile__group">
-            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h1 class="profile__name"></h1>
             <button
               class="profile__edit button"
               type="button"
               aria-label="edit"
             ></button>
           </div>
-          <p class="profile__desc">Explorer</p>
+          <p class="profile__desc"></p>
         </div>
         <button
           class="profile__add button"
@@ -84,7 +87,7 @@
                 class="popup__input popup__input_edit_title"
                 id="title-input"
                 placeholder="Title"
-                name="title"
+                name="name"
                 minlength="2"
                 maxlength="30"
                 required
@@ -96,7 +99,7 @@
                 class="popup__input popup__input_edit_image"
                 id="image-input"
                 placeholder="Image link"
-                name="imageUrl"
+                name="link"
                 type="url"
                 required
               />
@@ -109,6 +112,49 @@
               disabled
             >
               Create
+            </button>
+          </form>
+        </div>
+      </section>
+      <section class="popup" id="popupTrash">
+        <div class="popup__container">
+          <button
+            class="popup__close button"
+            type="button"
+            aria-label="Close"
+          ></button>
+          <form class="popup__info" id="trashInfo" name="trashForm">
+            <h2 class="popup__title">Are you sure?</h2>
+            <button type="submit" class="popup__save button" aria-label="save">
+              Yes
+            </button>
+          </form>
+        </div>
+      </section>
+      <section class="popup" id="popupProfilePicture">
+        <div class="popup__container">
+          <button
+            class="popup__close button"
+            type="button"
+            aria-label="Close"
+          ></button>
+          <form
+            class="popup__info"
+            id="profilePictureInfo"
+            name="editPicture"
+            novalidate
+          >
+            <h2 class="popup__title">Change profile picture</h2>
+            <input
+              class="popup__input popup__input_edit_profile-image"
+              id="profileImageInput"
+              placeholder="Profile Image URL"
+              name="profileUrl"
+              type="url"
+              required
+            />
+            <button type="submit" class="popup__save button" aria-label="save">
+              Save
             </button>
           </form>
         </div>
@@ -131,11 +177,14 @@
         <img class="grid-item__img" src="#" alt="#" />
         <div class="grid-item__info">
           <h2 class="grid-item__text"></h2>
-          <button
-            class="grid-item__like button"
-            type="button"
-            aria-label="like"
-          ></button>
+          <div class="grid-item__like-container">
+            <button
+              class="grid-item__like button"
+              type="button"
+              aria-label="like"
+            ></button>
+            <span class="grid-item__like-counter">0</span>
+          </div>
         </div>
       </li>
     </template>
