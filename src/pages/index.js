@@ -1,15 +1,16 @@
 import "./index.css";
 import FormValidator from "../components/FormValidator.js";
-import initialCards from "../utils/initial-cards.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupDelete from "../components/PopupDelete";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/api";
 import {
   cardSelector,
   profileEditBtn,
-  buttonAddCard,
+  addCardBtn,
   profileDesc,
   profileName,
   validationConfig,
@@ -20,7 +21,66 @@ import {
   gridList,
   popupImage,
   popupProfile,
+  cardTitleInput,
+  cardImageInput,
+  baseUrl,
+  addPlace,
+  profileImage,
+  pictureEdit,
+  profileImageContainer,
+  profileEditForm,
+  userId,
+  gridTrashItem,
+  trashInfo,
 } from "../utils/constants.js";
+
+const api = new Api(baseUrl);
+
+api.getUserInfo().then((res) => {
+  document.querySelector(profileName).textContent = res.name;
+  document.querySelector(profileDesc).textContent = res.about;
+  profileImage.src = res.avatar;
+  userInfo.setUserInfo({
+    name: res.name,
+    about: res.about,
+  });
+});
+
+function renderLoading(isLoading, formElement, text) {
+  const saveButton = formElement.querySelector(".popup__save");
+  if (isLoading) {
+    saveButton.textContent = text;
+  } else {
+    saveButton.textContent = text;
+  }
+}
+
+//NEW AVATAR
+const editAvatar = new PopupWithForm(
+  {
+    handleFormSubmit: (info) => {
+      renderLoading(true, pictureEdit, "Saving...");
+      profileImage.src = info.profileUrl;
+      api
+        .userAvatar({ avatar: info.profileUrl })
+        .then((res) => {
+          res.avatar = info.profileUrl;
+          renderLoading(false, pictureEdit, "Save");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      editAvatar.close();
+    },
+  },
+  "#popupProfilePicture"
+);
+
+editAvatar.setEventListeners();
+
+profileImageContainer.addEventListener("click", () => {
+  editAvatar.open();
+});
 
 //Profile Info
 const userInfo = new UserInfo({
@@ -31,7 +91,12 @@ const userInfo = new UserInfo({
 const profilePopupForm = new PopupWithForm(
   {
     handleFormSubmit: (info) => {
+      renderLoading(true, profileEditForm, "Saving...");
+      api.updateUserInfo(info).then(() => {
+        renderLoading(true, profileEditForm, "Save");
+      });
       userInfo.setUserInfo({ name: info.name, about: info.about });
+
       profilePopupForm.close();
     },
   },
@@ -47,7 +112,7 @@ profileEditBtn.addEventListener("click", () => {
   profilePopupForm.open();
 });
 
-//Creating new Card
+//CARD FUNCTIONALITY
 const imagePopup = new PopupWithImage(popupImage);
 imagePopup.setEventListeners();
 
@@ -60,7 +125,31 @@ const cardList = new Section(
           handleCardClick: () => {
             imagePopup.open(item);
           },
+          handleCardDelete: (id) => {
+            const popupDelete = new PopupDelete(
+              {
+                deleteSubmit: (id) => {
+                  renderLoading(true, trashInfo, "Deleteing...");
+                  api
+                    .deleteCard(id)
+                    .then(() => {
+                      renderLoading(false, trashInfo, "Yes");
+                      card.deleteUserCard();
+                      popupDelete.close();
+                      console.log(id);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
+                },
+              },
+              "#popupTrash"
+            );
+            popupDelete.setEventListeners(id);
+            popupDelete.open();
+          },
         },
+        userId,
         cardSelector
       );
       const cardElement = card.generateCard();
@@ -73,8 +162,16 @@ const cardList = new Section(
 const newPlace = new PopupWithForm(
   {
     handleFormSubmit: (item) => {
-      const newCards = [{ name: item.title, link: item.imageUrl }];
-      cardList.renderItems(newCards);
+      renderLoading(true, addPlace, "Saving...");
+      api
+        .createNewCard({ name: item.name, link: item.link })
+        .then((res) => {
+          cardList.renderItems([res]);
+          renderLoading(false, addPlace, "Create");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       newPlace.close();
     },
   },
@@ -83,11 +180,18 @@ const newPlace = new PopupWithForm(
 
 newPlace.setEventListeners();
 
-buttonAddCard.addEventListener("click", () => {
+addCardBtn.addEventListener("click", () => {
   newPlace.open();
 });
 
-cardList.renderItems(initialCards);
+api
+  .getInitialCards()
+  .then((res) => {
+    cardList.renderItems(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // FORM VALIDATION
 const profileFormValidate = new FormValidator(validationConfig, profileForm);
