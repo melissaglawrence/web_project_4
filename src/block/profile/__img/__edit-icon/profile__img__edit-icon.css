@@ -1,4 +1,4 @@
-.profile__img_edit-icon {
+.profile__img__edit-icon {
   background-image: url(../../../../images/edit.svg);
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
@@ -21,7 +21,7 @@
   z-index: 1;
 }
 
-.profile__img_edit-icon:hover {
+.profile__img__edit-icon:hover {
   opacity: 1;
   transition: 0.3s ease;
 }
