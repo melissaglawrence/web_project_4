@@ -18,10 +18,26 @@ export const inputDescription = document.querySelector(
   ".popup__input_edit_about"
 );
 export const popupProfile = "#popupEdit";
+export const pictureEdit = document.querySelector("#profilePictureInfo");
+export const profileEditForm = document.querySelector("#profileInfo");
 
 //CARDS
-export const buttonAddCard = document.querySelector(".profile__add");
+export const addCardBtn = document.querySelector(".profile__add");
+export const addPlace = document.querySelector("#placeInfo");
 export const cardSelector = "#grid-template";
 export const popupImage = "#popupImage";
 export const gridList = ".grid__list";
 export const popupAddPlace = "#popupPlace";
+export const popupTrash = document.querySelector("#popupTrash");
+export const trashInfo = document.querySelector("#trashInfo");
+export const profileImageContainer = document.querySelector(".profile__img");
+export const profileImage = document.querySelector(".profile__img_content");
+export const baseUrl = "https://around.nomoreparties.co/v1/group-10";
+export const cardTitleInput = document.querySelector(
+  ".popup__input_edit_title"
+);
+export const cardImageInput = document.querySelector(
+  ".popup__input_edit_image"
+);
+export const gridTrashItem = document.querySelector(".grid-item__trash_active");
+export const userId = "aaddffb00a18a05d24c43b7a";
