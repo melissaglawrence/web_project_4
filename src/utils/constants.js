@@ -30,8 +30,10 @@ export const gridList = ".grid__list";
 export const popupAddPlace = "#popupPlace";
 export const popupTrash = document.querySelector("#popupTrash");
 export const trashInfo = document.querySelector("#trashInfo");
-export const profileImageContainer = document.querySelector(".profile__img");
-export const profileImage = document.querySelector(".profile__img__content");
+export const profileImageContainer = document.querySelector(
+  ".profile__img-container"
+);
+export const profileImage = document.querySelector(".profile__img-content");
 export const baseUrl = "https://around.nomoreparties.co/v1/group-10";
 export const cardTitleInput = document.querySelector(
   ".popup__input_edit_title"

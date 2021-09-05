@@ -21,8 +21,6 @@ import {
   gridList,
   popupImage,
   popupProfile,
-  cardTitleInput,
-  cardImageInput,
   baseUrl,
   addPlace,
   profileImage,
@@ -30,7 +28,6 @@ import {
   profileImageContainer,
   profileEditForm,
   userId,
-  gridTrashItem,
   trashInfo,
 } from "../utils/constants.js";
 
@@ -65,12 +62,12 @@ const editAvatar = new PopupWithForm(
         .userAvatar({ avatar: info.profileUrl })
         .then((res) => {
           res.avatar = info.profileUrl;
+          editAvatar.close();
           renderLoading(false, pictureEdit, "Save");
         })
         .catch((err) => {
           console.log(err);
         });
-      editAvatar.close();
     },
   },
   "#popupProfilePicture"
@@ -93,11 +90,10 @@ const profilePopupForm = new PopupWithForm(
     handleFormSubmit: (info) => {
       renderLoading(true, profileEditForm, "Saving...");
       api.updateUserInfo(info).then(() => {
+        profilePopupForm.close();
         renderLoading(true, profileEditForm, "Save");
       });
       userInfo.setUserInfo({ name: info.name, about: info.about });
-
-      profilePopupForm.close();
     },
   },
   popupProfile
@@ -167,12 +163,12 @@ const newPlace = new PopupWithForm(
         .createNewCard({ name: item.name, link: item.link })
         .then((res) => {
           cardList.renderItems([res]);
+          newPlace.close();
           renderLoading(false, addPlace, "Create");
         })
         .catch((err) => {
           console.log(err);
         });
-      newPlace.close();
     },
   },
   popupAddPlace
