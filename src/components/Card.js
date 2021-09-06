@@ -5,7 +5,7 @@ const api = new Api(baseUrl);
 
 export default class Card {
   constructor(
-    { data, handleCardClick, handleCardDelete },
+    { data, handleCardClick, handleCardLike, handleCardDelete },
     userId,
     cardSelector
   ) {
@@ -16,6 +16,7 @@ export default class Card {
     this._userId = userId;
     this._likes = data.likes;
     this._handleCardClick = handleCardClick;
+    this._handleCardLike = handleCardLike;
     this._handleCardDelete = handleCardDelete;
 
     this._cardSelector = cardSelector;
@@ -29,25 +30,15 @@ export default class Card {
     return cardElement;
   }
   _likeCard = () => {
-    this._likeButton = this._card.querySelector(".grid-item__like");
     this._likeCounter = this._card.querySelector(".grid-item__like-counter");
-
-    if (this._likeButton.classList.contains("grid-item__like_active")) {
-      api.removeLike(this._id).then((res) => {
-        this._likeCounter.textContent = res.likes.length;
-      });
-    } else {
-      api.addLike(this._id).then((res) => {
-        this._likeCounter.textContent = res.likes.length;
-      });
-    }
     this._card
       .querySelector(".grid-item__like")
       .classList.toggle("grid-item__like_active");
+    this._handleCardLike(this._id, this._likeButton, this._likeCounter);
   };
   _isLiked() {
     const _likesArr = Array.from(this._likes);
-    _likesArr.forEach((like) => {
+    _likesArr.some((like) => {
       if (like._id === this._userId) {
         this._likeButton.classList.add("grid-item__like_active");
       }
