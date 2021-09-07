@@ -51,10 +51,6 @@ export default class Card {
         .classList.add("grid-item__trash_active");
     }
   }
-  deleteUserCard = () => {
-    this._card.remove();
-    this._card = null;
-  };
   _setEventListeners() {
     this._likeButton = this._card.querySelector(".grid-item__like");
     this._trashButton = this._card.querySelector(".grid-item__trash");
@@ -62,7 +58,7 @@ export default class Card {
 
     this._imageElement.addEventListener("click", this._handleCardClick);
     this._trashButton.addEventListener("click", () => {
-      this._handleCardDelete(this._id);
+      this._handleCardDelete(this._card, this._id);
     });
     this._likeButton.addEventListener("click", this._likeCard);
   }

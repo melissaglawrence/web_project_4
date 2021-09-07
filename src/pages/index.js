@@ -73,27 +73,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
                   });
                 }
               },
-              handleCardDelete: (id) => {
-                const popupDelete = new PopupDelete(
-                  {
-                    deleteSubmit: (id) => {
-                      renderLoading(true, trashInfo, "Deleteing...");
-                      api
-                        .deleteCard(id)
-                        .then(() => {
-                          renderLoading(false, trashInfo, "Yes");
-                          card.deleteUserCard();
-                          popupDelete.close();
-                        })
-                        .catch((err) => {
-                          console.log(err);
-                        });
-                    },
-                  },
-                  "#popupTrash"
-                );
-                popupDelete.setEventListeners(id);
-                popupDelete.open();
+              handleCardDelete: (item, id) => {
+                popupDelete.open(item, id);
               },
             },
             userId,
@@ -137,6 +118,25 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .catch((err) => {
     console.log(err);
   });
+
+const popupDelete = new PopupDelete(
+  {
+    handleDeleteSubmit: (card, id) => {
+      api
+        .deleteCard(id)
+        .then(() => {
+          card.remove();
+          popupDelete.close();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  "#popupTrash"
+);
+
+popupDelete.setEventListeners();
 
 //NEW AVATAR
 const editAvatar = new PopupWithForm(
