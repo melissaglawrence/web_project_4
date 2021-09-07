@@ -122,11 +122,13 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 const popupDelete = new PopupDelete(
   {
     handleDeleteSubmit: (card, id) => {
+      renderLoading(true, trashInfo, "Deleteing..");
       api
         .deleteCard(id)
         .then(() => {
           card.remove();
           popupDelete.close();
+          renderLoading(true, trashInfo, "Yes");
         })
         .catch((err) => {
           console.log(err);
